@@ -1,0 +1,17 @@
+{% extends 'base.html.twig' %}
+{% block title %}Admin{% endblock %}
+{% block body %}
+    <h1>Admin</h1>
+    <p>Bienvenue sur la page d'administration de notre site.</p>
+    {% if app.user %}
+        <p>Vous êtes connecté en tant que {{ app.user.firstName }}</p>
+    {% endif %}
+    <ul>
+        <li><a href="{{ path('app_user_index') }}">Gestion des utilisateurs</a></li>
+        <li><a href="{{ path('app_post_index') }}">Gestion des articles</a></li>
+        <li><a href="{{ path('app_tag_index') }}">Gestion des catégories</a></li>
+        <li><a href="{{ path('app_comment_index') }}">Gestion des commentaires</a></li>
+        <li><a href="{{ path('app_reaction_index') }}">Gestion des catégories</a></li>
+    </ul>
+    <a href="{{ path('app_logout') }}">Logout</a>
+{% endblock %}
