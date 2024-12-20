@@ -1,0 +1,5 @@
+App\Entity\Comment:
+  comment_{1..25}:
+    content: '<paragraph(3)>'
+    created_at: '<dateTimeThisYear()>'
+    publisher: '@user_*'

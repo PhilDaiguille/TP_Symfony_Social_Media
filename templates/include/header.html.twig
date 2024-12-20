@@ -1,0 +1,15 @@
+<header class="bg-gray-800 p-4">
+    <div class="md:container md:mx-auto mx-auto flex justify-between items-center">
+        <a href="{{ path('app_home') }}" class="text-white
+                text-2xl font-bold">Reseau Social</a>
+        <div>
+            {% if app.user %}
+                <span class="text-white
+                text-sm">{{ app.user.firstName }} - {{ app.user.lastName }}</span>
+                <a href="{{ path('app_logout') }}" class="text-white text-sm">Logout</a>
+            {% else %}
+                <a href="{{ path('app_login') }}" class="text-white text-sm">Login</a>
+            {% endif %}
+        </div>
+    </div>
+</header>

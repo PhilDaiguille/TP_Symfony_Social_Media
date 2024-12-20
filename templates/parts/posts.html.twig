@@ -1,0 +1,59 @@
+<article class="bg-gray-200 p-4 rounded-lg shadow-md mb-4">
+    <div class="flex items-center mb-2">
+        <div>
+            <h2 class="text-lg font-semibold">{{ post.publisher.firstName }} {{ post.publisher.lastName }}</h2>
+        </div>
+    </div>
+    <p class=" mb-2">{{ post.content }}</p>
+    <div class="flex items-center text-gray-600 text-sm">
+        <span class="mr-4 flex items-center"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
+                                                  stroke-width="1.5" stroke="currentColor" class="size-6">
+  <path stroke-linecap="round" stroke-linejoin="round"
+        d="M12 20.25c4.97 0 9-3.694 9-8.25s-4.03-8.25-9-8.25S3 7.444 3 12c0 2.104.859 4.023 2.273 5.48.432.447.74 1.04.586 1.641a4.483 4.483 0 0 1-.923 1.785A5.969 5.969 0 0 0 6 21c1.282 0 2.47-.402 3.445-1.087.81.22 1.668.337 2.555.337Z"/>
+            </svg>
+             {{ post.comments|length }}</span>
+        <span class="mr-4 flex items-center">
+    {% if post.reactions|length > 0 %}
+        {% for reaction in post.reactions %}
+            <span class="px-2 py-1 bg-red-600 text-white rounded-lg me-2">
+                {{ reaction.type }}
+            </span>
+        {% endfor %}
+    {% else %}
+        No reactions available
+    {% endif %}
+</span>
+    </div>
+    <div class="mt-2">
+        <p class="text-sm">Tags:
+            {% if post.tags|length > 0 %}
+
+                {% for tag in post.tags %}
+                    <span class="px-2 py-1 bg-indigo-600 text-white rounded-lg me-2">
+                        {{ tag.name }}
+                    </span>
+                {% endfor %}
+
+            {% else %}
+                No tags available
+            {% endif %}
+        </p>
+    </div>
+    <hr class="mt-4">
+    <div>
+        <h2>Commentaires</h2>
+        <div class="mt-4">
+            {% for comment in post.comments %}
+                <div class="bg-gray-100 p-3 rounded-lg mb-2">
+                    <div class="flex items-center mb-2">
+                        <div>
+                            <h3 class="text-sm font-semibold">{{ comment.publisher.firstName }} {{ comment.publisher.lastName }}</h3>
+                        </div>
+                    </div>
+                    <p class="-700">{{ comment.content }}</p>
+                    <time class="-500 text-sm">{{ comment.createdAt|date('d/m/Y H:i') }}</time>
+                </div>
+            {% endfor %}
+        </div>
+    </div>
+</article>

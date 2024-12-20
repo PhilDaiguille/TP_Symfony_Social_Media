@@ -1,0 +1,10 @@
+{% extends 'base.html.twig' %}
+{% block title %}Accueil{% endblock %}
+{% block body %}
+    <h1>Accueil</h1>
+    <p>Bienvenue sur la page d'accueil de notre site.</p>
+    <p>Vous pouvez consulter les articles en cliquant sur le lien ci-dessous :</p>
+    {% for post in posts %}
+        {% include 'parts/posts.html.twig' with {'post': post} %}
+    {% endfor %}
+{% endblock %}

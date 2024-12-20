@@ -1,0 +1,4 @@
+App\Entity\Reaction:
+  reaction_{1..50}:
+    type: '<randomElement(["like", "love", "haha", "wow", "sad", "angry"])>'
+    reaction_user: '@user_*'
